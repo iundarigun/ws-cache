@@ -23,8 +23,9 @@ public class PersonController {
         return personRepository.findOne(id);
     }
 
-    @RequestMapping(value = "/email/{email}", method = RequestMethod.GET)
+    @RequestMapping(value = "/email/{email}/", method = RequestMethod.GET)
     public Person getPersonByEmail(@PathVariable("email") String email){
+        log.info("M=getPersonByEmail, email={}",email);
         return personRepository.findFirstByEmail(email);
     }
 }

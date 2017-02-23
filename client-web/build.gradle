@@ -30,6 +30,7 @@ ext{
 	slf4jVersion = '1.7.22'
 	bootstrapVersion = '3.3.7'
 	webjarsLocatorVersion = '0.32'
+	feignVersion = '9.4.0'
 }
 
 dependencies {
@@ -40,6 +41,9 @@ dependencies {
 	compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
 	compile group: 'org.webjars', name: 'bootstrap', version: bootstrapVersion
 	compile group: 'org.webjars', name: 'webjars-locator', version: webjarsLocatorVersion
+	compile group: 'io.github.openfeign', name: 'feign-core', version: feignVersion
+	compile group: 'io.github.openfeign', name: 'feign-gson', version: feignVersion
+
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
