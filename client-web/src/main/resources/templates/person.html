@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Consulta de Pessoas</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <h1>Resultado da consulta</h1>
+    <div th:if="${person == null}" class="alert alert-danger">
+        Pessoa não encontrada!
+    </div>
+    <table th:unless="${person == null}" class="table table-bordered table-striped table-hover">
+        <tr>
+            <th th:text="Identificador"/>
+            <th th:text="Email"/>
+            <th th:text="Nome"/>
+        </tr>
+        <tr >
+            <td th:text="${person.id }"/>
+            <td th:text="${person.email}"/>
+            <td th:text="${person.name}"/>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

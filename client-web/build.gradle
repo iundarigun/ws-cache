@@ -1,0 +1,45 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+jar {
+	baseName = 'client-web'
+	version = '0.0.1-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+ext{
+	lombokVersion = '1.16.12'
+	slf4jVersion = '1.7.22'
+	bootstrapVersion = '3.3.7'
+	webjarsLocatorVersion = '0.32'
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.springframework.boot:spring-boot-starter-web')
+
+	compile group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+	compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+	compile group: 'org.webjars', name: 'bootstrap', version: bootstrapVersion
+	compile group: 'org.webjars', name: 'webjars-locator', version: webjarsLocatorVersion
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}

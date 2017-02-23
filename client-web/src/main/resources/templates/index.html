@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Consulta de Pessoas</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <h1>Consulta de pessoas</h1>
+    <form method="get" th:action="@{/person/search}" th:object="${personForm}">
+        <div class="form-group">
+            <label th:for="id" th:text="Identificador"/>
+            <input type="text" th:field="*{id}" class="form-control" maxlength="10"/>
+        </div>
+        <div class="form-group">
+            <label th:for="email" th:text="Email"/>
+            <input type="text" th:field="*{email}" class="form-control" maxlength="255"/>
+        </div>
+        <button type="submit" class="btn btn-primary" th:text="Pesquisar"/>
+    </form>
+</div>
+</body>
+</html>
