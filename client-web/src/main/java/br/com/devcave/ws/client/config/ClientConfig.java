@@ -3,6 +3,7 @@ package br.com.devcave.ws.client.config;
 import br.com.devcave.ws.client.services.PersonService;
 import feign.Feign;
 import feign.gson.GsonDecoder;
+import feign.gson.GsonEncoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -14,6 +15,7 @@ public class ClientConfig {
     @Bean
     public PersonService personService(){
         return Feign.builder()
+                .encoder(new GsonEncoder())
                 .decoder(new GsonDecoder())
                 .target(PersonService.class, "http://localhost:1980");
     }

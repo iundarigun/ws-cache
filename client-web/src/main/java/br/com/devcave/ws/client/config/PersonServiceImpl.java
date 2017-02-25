@@ -1,5 +1,6 @@
 package br.com.devcave.ws.client.config;
 
+import br.com.devcave.ws.client.dto.PersonForm;
 import br.com.devcave.ws.client.dto.PersonVO;
 import br.com.devcave.ws.client.services.PersonService;
 import feign.Param;
@@ -26,5 +27,15 @@ public class PersonServiceImpl implements PersonService {
             return new PersonVO(1L, email, "Teste devcave");
         }
         return null;
+    }
+
+    @Override
+    public void updatePerson(PersonForm person) {
+
+    }
+
+    @Override
+    public Long countPerson() {
+        return 10L;
     }
 }

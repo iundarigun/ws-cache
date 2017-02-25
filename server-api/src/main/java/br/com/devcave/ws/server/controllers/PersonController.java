@@ -4,10 +4,8 @@ import br.com.devcave.ws.server.domain.Person;
 import br.com.devcave.ws.server.repository.PersonRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/person")
@@ -27,5 +25,17 @@ public class PersonController {
     public Person getPersonByEmail(@PathVariable("email") String email){
         log.info("M=getPersonByEmail, email={}",email);
         return personRepository.findFirstByEmail(email);
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public void updatePerson(@RequestBody Person person){
+        log.info("M=updatePerson, person={}",person);
+        personRepository.save(person);
+    }
+
+    @RequestMapping(value = "/count", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Long countPerson(){
+        log.info("M=countPerson");
+        return new Long(personRepository.count());
     }
 }

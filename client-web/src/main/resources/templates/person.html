@@ -14,18 +14,22 @@
     <div th:if="${person == null}" class="alert alert-danger">
         Pessoa não encontrada!
     </div>
-    <table th:unless="${person == null}" class="table table-bordered table-striped table-hover">
-        <tr>
-            <th th:text="Identificador"/>
-            <th th:text="Email"/>
-            <th th:text="Nome"/>
-        </tr>
-        <tr >
-            <td th:text="${person.id }"/>
-            <td th:text="${person.email}"/>
-            <td th:text="${person.name}"/>
-        </tr>
-    </table>
+    <form th:unless="${person == null}" method="get" th:action="@{/person/update}" th:object="${person}">
+        <table class="table table-bordered table-striped table-hover">
+            <tr>
+                <th th:text="Identificador"/>
+                <th th:text="Email"/>
+                <th th:text="Nome"/>
+            </tr>
+            <tr>
+                <td th:text="${person.id}"/>
+                <td><input type="text" th:field="*{email}" maxlength="255"/></td>
+                <td><input type="text" th:field="*{name}" maxlength="255"/></td>
+            </tr>
+        </table>
+        <input type="hidden" th:field="*{id}"/>
+        <button type="submit" class="btn btn-primary" th:text="Alterar"/>
+    </form>
 </div>
 </body>
 </html>

@@ -31,11 +31,13 @@ ext{
 	bootstrapVersion = '3.3.7'
 	webjarsLocatorVersion = '0.32'
 	feignVersion = '9.4.0'
+	guavaVersion = '21.0'
 }
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-cache')
 
 	compile group: 'org.projectlombok', name: 'lombok', version: lombokVersion
 	compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
@@ -43,6 +45,7 @@ dependencies {
 	compile group: 'org.webjars', name: 'webjars-locator', version: webjarsLocatorVersion
 	compile group: 'io.github.openfeign', name: 'feign-core', version: feignVersion
 	compile group: 'io.github.openfeign', name: 'feign-gson', version: feignVersion
+	compile group: 'com.google.guava', name: 'guava', version: guavaVersion
 
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
