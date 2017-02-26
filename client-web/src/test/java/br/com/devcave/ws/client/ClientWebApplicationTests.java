@@ -24,10 +24,10 @@ import org.springframework.web.servlet.ModelAndView;
 public class ClientWebApplicationTests {
 
     @Autowired
-//	@InjectMocks
+	@InjectMocks
     private PersonController personController;
-//	@Mock
-//	private PersonService personService;
+	@Mock
+	private PersonService personService;
 
     @Before
     public void setup() {
@@ -37,13 +37,13 @@ public class ClientWebApplicationTests {
     @Test
     public void testSemPesquisa() {
         ModelAndView modelAndView = personController.getPerson(new PersonForm());
-        Assert.assertEquals("index", modelAndView.getViewName());
+        Assert.assertEquals("redirect:/", modelAndView.getViewName());
     }
 
     @Test
     public void testPesquisandoPorIdExistente() {
         PersonVO personVO = new PersonVO(2L, "test2@devcave.com.br", "2o Teste da devCave");
-//		Mockito.when(personService.getById(2L)).thenReturn(personVO);
+		Mockito.when(personService.getById(2L)).thenReturn(personVO);
         ModelAndView modelAndView = personController.getPerson(new PersonForm(2L, null, null));
         Assert.assertEquals("person", modelAndView.getViewName());
         PersonVO result = (PersonVO) modelAndView.getModel().get("person");
@@ -52,7 +52,7 @@ public class ClientWebApplicationTests {
 
     @Test
     public void testPesquisandoPorIdInexistente() {
-//		Mockito.when(personService.getById(5L)).thenReturn(null);
+		Mockito.when(personService.getById(5L)).thenReturn(null);
         ModelAndView modelAndView = personController.getPerson(new PersonForm(5L, null, null));
         Assert.assertEquals("person", modelAndView.getViewName());
         PersonVO result = (PersonVO) modelAndView.getModel().get("person");
